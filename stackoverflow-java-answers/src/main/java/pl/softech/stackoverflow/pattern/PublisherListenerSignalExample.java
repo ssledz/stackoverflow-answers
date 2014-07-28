@@ -99,9 +99,16 @@ public class PublisherListenerSignalExample {
 		addListener(new Listener() {
 			
 			@Override
-			public void onEventRecieved(Event e) {
-			    textArea_3.setText(""+e.getDistance()); //would have to be converted to String
-			    textArea_4.setText(""+e.getAtten()); //would have to be converted to String
+			public void onEventRecieved(final Event e) {
+				SwingUtilities.invokeLater(new Runnable() {
+					
+					@Override
+					public void run() {
+						textArea_3.setText(""+e.getDistance()); //would have to be converted to String
+					    textArea_4.setText(""+e.getAtten()); //would have to be converted to String
+					}
+				});
+			    
 			}
 		});
 		
