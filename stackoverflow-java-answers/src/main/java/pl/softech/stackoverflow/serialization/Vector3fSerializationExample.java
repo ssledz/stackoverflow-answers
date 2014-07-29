@@ -30,6 +30,9 @@ public class Vector3fSerializationExample {
 	}
 
 	static class Vector3fSubclass2 extends Vector3f implements Serializable {
+		
+		private static final long serialVersionUID = 1L;
+
 		Vector3fSubclass2() {
 		}
 
