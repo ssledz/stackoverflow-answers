@@ -29,6 +29,15 @@ public class Vector3fSerializationExample {
 
 	}
 
+	static class Vector3fSubclass2 extends Vector3f implements Serializable {
+		Vector3fSubclass2() {
+		}
+
+		Vector3fSubclass2(double x, double y, double z) {
+			super(x, y, z);
+		}
+	}
+
 	static class Vector3fSubclass extends Vector3f implements Serializable {
 
 		private static final long serialVersionUID = 1L;
@@ -86,7 +95,10 @@ public class Vector3fSerializationExample {
 		Vector3f v3f = new Vector3fSubclass(1, 2, 3);
 		byte[] arr = SerializationUtil.serialize(v3f);
 		System.out.println(SerializationUtil.deserialize(arr));
-
+		
+		v3f = new Vector3fSubclass2(1, 2, 3); //subclass without needed methods
+		arr = SerializationUtil.serialize(v3f);
+		System.out.println(SerializationUtil.deserialize(arr));
 	}
 
 }
